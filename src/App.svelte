@@ -1,12 +1,14 @@
 <script>
   import svelteLogo from './assets/svelte.svg'
   import Counter from './lib/Counter.svelte'
+  import {Router,Route} from 'svero';
+  import Stream from './lib/Stream.svelte';
 </script>
 
-<main>
-  <h1>Hello!</h1>
-  <h2>I am Prateek Poudel</h2>
-</main>
+<h1>NEB GPA Calculator</h1>
+<Router>
+  <Route path="*" component={Stream} />
+</Router>
 
 <style>
 </style>
