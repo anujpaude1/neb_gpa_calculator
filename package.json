@@ -16,6 +16,7 @@
     "vite": "^4.1.0"
   },
   "dependencies": {
+    "@smui/common": "^7.0.0-beta.0",
     "svelte-routing": "^1.6.0",
     "svero": "^1.0.0"
   }
