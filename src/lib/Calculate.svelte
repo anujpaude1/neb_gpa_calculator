@@ -276,9 +276,6 @@
 
 {:else if input_type==='marks'}
 <h2 ><i style="font-weight:100">Please enter marks for only subjects that you have taken.</i></h2>
-<h2>Under Construction !!!
-   Please use GPA method !
-</h2>
 <div id="changing">
   {#each Object.keys(subjects) as subject}
   <div id="combo">
