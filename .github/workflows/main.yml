@@ -14,7 +14,8 @@ jobs:
     - name: 🔨 Build Project
       run: |
         npm install
-        npm run compile && mkdir build && cp -R src/* build/
+        npm run build
+        mv dist/* . && rm -r dist
 
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.0.0
