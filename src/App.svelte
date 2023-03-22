@@ -11,7 +11,7 @@
   
 </script>
 <main>
-<h1>NEB GPA Calculator</h1>
+<h1 class="main_text" on:click={()=>course.update(val => val=undefined)} > NEB GPA Calculator </h1>
 <div class="container">
   {#if choosen_course}
     <Calculate></Calculate>
@@ -21,5 +21,7 @@
 </div>
 </main>
 <style>
-  
+  .main_text{
+cursor: pointer;
+  }
 </style>

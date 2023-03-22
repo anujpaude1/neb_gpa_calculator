@@ -153,7 +153,6 @@
   
 
 </script>
-
 <div id="input_method">
 <h2>Input Method</h2>
 <div class="buttons">
@@ -164,6 +163,10 @@
 
 
 <style>
+  .go_back{
+    position: absolute;
+    left:30px;
+  }
 
   .active{
     box-shadow: 0 2px 6px rgba(0, 255, 17, 0.639);
