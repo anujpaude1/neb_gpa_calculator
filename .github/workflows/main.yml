@@ -30,7 +30,7 @@ jobs:
       - name: FTP-Deploy-Action
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          ftp-server: ftp.paudelanuj.com.np
-          ftp-username: ftp_github@paudelanuj.com.np
-          ftp-password: ${{ secrets.FTP_PASSWORD }}
+          server: ftp.paudelanuj.com.np
+          username: ftp_github@paudelanuj.com.np
+          password: ${{ secrets.FTP_PASSWORD }}
           local-dir: build/
