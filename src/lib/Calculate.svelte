@@ -4,7 +4,7 @@
   import { course } from '.././stores.js';
   import { onMount } from 'svelte'
   let choosen_course
-  let subjects
+  let subjects={}
   course.subscribe(val => choosen_course=val)
  
   let input_type
@@ -22,6 +22,16 @@
       is_active2=true;
       is_active1=false;
     }
+    if (choosen_course==="science")
+    {
+      subjects=JSON.parse(JSON.stringify(science));
+    }
+    if (choosen_course==="management")
+    {
+      subjects=JSON.parse(JSON.stringify(management));
+    }
+    update_gpa()
+    
   }
   let science = {
   "Nepali": [0, 0, 75,25],
@@ -81,6 +91,7 @@
     const classarr=event.target.className.split(" ");
     const selected_class=classarr[0].toString().trim();
     let marks_to_gpa_result=marks_to_gpa(selected_class,parseInt(classarr[1]),selected_value);
+    console.log(marks_to_gpa_result)
     if(classarr[1]=="2")
     {
       subjects[selected_class].splice(1, 1, marks_to_gpa_result);
@@ -107,12 +118,15 @@
         return 2.8;
       }
       if (((60/100) * subjects[subject_name][position]) > value && value >= ((50/100) * subjects[subject_name][position])) {
-        return 2.0;
+        return 2.4;
       }
       if (((50/100) * subjects[subject_name][position]) > value && value >= ((40/100) * subjects[subject_name][position])) {
-        return 1.8;
+        return 2;
       }
       if (((40/100) * subjects[subject_name][position]) > value && value >= ((30/100) * subjects[subject_name][position])) {
+        return 1.8;
+      }
+      if (((30/100) * subjects[subject_name][position]) > value && value >= ((20/100) * subjects[subject_name][position])) {
         return 1.6;
       }
       else
@@ -122,18 +136,8 @@
   }
     
 
-  
-
 
   var calculated_gpa;
-  if (choosen_course==="science")
-  {
-    subjects=science
-  }
-  if (choosen_course==="management")
-  {
-    subjects=management
-  }
   function update_gpa()
   {
     if (choosen_course==="science")

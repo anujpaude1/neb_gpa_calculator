@@ -1,5 +1,4 @@
 <script>
-    import { navigate } from 'svelte-routing';
     import { course } from '.././stores.js';
     function goToPage(course1) {
     course.update(val => val=course1)
