@@ -46,7 +46,6 @@
   let gpa=["4.0 or A+","3.6 or A","3.2 or B+","2.8 or B","2.4 or C+","2.0 or C","1.8 or D+","1.6 or D"]
   function update_gpap(event){
     const selected_value=event.target.value;
-    const selected_class1=event.target.className.trim();
     const selected_class=event.target.className.split(" ")[0].toString().trim();
     if(selected_value!=="Select")
     {
@@ -64,7 +63,6 @@
 
   function update_gpat(event){
     const selected_value=event.target.value;
-    const className=event.target.className;
     const selected_class=event.target.className.split(" ")[0].toString().trim();
     if(selected_value!=="Select")
     {
@@ -77,8 +75,56 @@
       subjects[selected_class].splice(1, 1, 0);
     }
     update_gpa()
-    
   }
+  function calculate_gpa(event){
+    const selected_value=event.target.value;
+    const classarr=event.target.className.split(" ");
+    const selected_class=classarr[0].toString().trim();
+    let marks_to_gpa_result=marks_to_gpa(selected_class,parseInt(classarr[1]),selected_value);
+    if(classarr[1]=="2")
+    {
+      subjects[selected_class].splice(1, 1, marks_to_gpa_result);
+    }
+    if(classarr[1]=="3")
+    {
+      subjects[selected_class].splice(0, 1, marks_to_gpa_result);
+    }
+    update_gpa()
+  }
+
+  function marks_to_gpa(subject_name,position,value){
+      if (((90/100) * subjects[subject_name][position]) <= value) {
+      return 4
+        }
+        if (((90/100) * subjects[subject_name][position]) > value && value >= ((80/100) * subjects[subject_name][position])) {
+      return 3.6;
+      }
+
+      if (((80/100) * subjects[subject_name][position]) > value && value >= ((70/100) * subjects[subject_name][position])) {
+        return 3.2;
+      }
+      if (((70/100) * subjects[subject_name][position]) > value && value >= ((60/100) * subjects[subject_name][position])) {
+        return 2.8;
+      }
+      if (((60/100) * subjects[subject_name][position]) > value && value >= ((50/100) * subjects[subject_name][position])) {
+        return 2.0;
+      }
+      if (((50/100) * subjects[subject_name][position]) > value && value >= ((40/100) * subjects[subject_name][position])) {
+        return 1.8;
+      }
+      if (((40/100) * subjects[subject_name][position]) > value && value >= ((30/100) * subjects[subject_name][position])) {
+        return 1.6;
+      }
+      else
+      {
+        return 0
+      }
+  }
+    
+
+  
+
+
   var calculated_gpa;
   if (choosen_course==="science")
   {
@@ -179,7 +225,7 @@
     margin:0px 7px;
   }
 
-  .text_box{
+  #text_box{
     width: 36px;
     height: 29px;
     position: relative;
@@ -239,9 +285,9 @@
   <h2 class="subject_name">{subject}</h2>
   <div id="each_subject">
   <h3>Practical :</h3>
-  <input type="text" class="text_box"><h2 class="outof">/{subjects[subject][3]}</h2>
+  <input type="text" id="text_box" class={subject+' 3'} on:change={calculate_gpa}><h2 class="outof">/{subjects[subject][3]}</h2>
   <h3>Theory :</h3>
-    <input type="text" class="text_box"><h2 class="outof">/{subjects[subject][2]}</h2>
+    <input type="text" id="text_box" class={subject+' 2'} on:change={calculate_gpa}><h2 class="outof">/{subjects[subject][2]}</h2>
   </div>
   </div>
   {/each}
