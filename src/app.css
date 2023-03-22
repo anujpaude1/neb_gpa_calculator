@@ -116,6 +116,9 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+  .text_box{
+    top: 2px;
+  }
 }
 
 @media screen and (max-width: 430px) {

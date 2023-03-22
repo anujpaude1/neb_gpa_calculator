@@ -24,23 +24,23 @@
     }
   }
   let science = {
-  "Nepali": [0, 0],
-  "English": [0, 0],
-  "Physics": [0, 0],
-  "Chemistry": [0, 0],
-  "Maths": [0, 0],
-  "Computer": [0, 0],
-  "Biology": [0, 0],
-  "Social": [0, 0]
+  "Nepali": [0, 0, 75,25],
+  "English": [0, 0, 75,25],
+  "Physics": [0, 0, 75,25],
+  "Chemistry": [0, 0, 75,25],
+  "Maths": [0, 0, 75,25],
+  "Computer": [0, 0, 50,50],
+  "Biology": [0, 0, 75,25],
+  "Social": [0, 0, 75,25]
   };
   let management = {
-  "Nepali": [0, 0],
-  "English": [0, 0],
-  "Social": [0, 0],
-  "Economics": [0, 0],
-  "Account": [0, 0],
-  "Computer": [0, 0],
-  "Maths": [0, 0]
+  "Nepali": [0, 0, 75,25],
+  "English": [0, 0, 75,25],
+  "Social": [0, 0, 75,25],
+  "Economics": [0, 0, 75,25],
+  "Account": [0, 0, 75,25],
+  "Computer": [0, 0, 50,50],
+  "Maths": [0, 0, 75,25],
   };
   let select_style='background-color: grey';
   let gpa=["4.0 or A+","3.6 or A","3.2 or B+","2.8 or B","2.4 or C+","2.0 or C","1.8 or D+","1.6 or D"]
@@ -175,6 +175,29 @@
     display:inline-block;
     margin: 28px 0 0 0;
   }
+  #combo{
+    margin:0px 7px;
+  }
+
+  .text_box{
+    width: 36px;
+    height: 29px;
+    position: relative;
+    padding: 0 9px;
+    margin: 0 0 0 9px;
+    background-color: rgba(194, 136, 219, 0.808);
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.4em;
+    border: none;
+    border-radius: 23px;
+  }
+  .outof{
+    font-size: 1.6em;
+    position: relative;
+    top:3px;
+    margin-right: 10px;
+  }
 </style>
 
 
@@ -206,7 +229,23 @@
 
 
 {:else if input_type==='marks'}
-<h2>Under Construction</h2>
+<h2 ><i style="font-weight:100">Please enter marks for only subjects that you have taken.</i></h2>
+<h2>Under Construction !!!
+   Please use GPA method !
+</h2>
+<div id="changing">
+  {#each Object.keys(subjects) as subject}
+  <div id="combo">
+  <h2 class="subject_name">{subject}</h2>
+  <div id="each_subject">
+  <h3>Practical :</h3>
+  <input type="text" class="text_box"><h2 class="outof">/{subjects[subject][3]}</h2>
+  <h3>Theory :</h3>
+    <input type="text" class="text_box"><h2 class="outof">/{subjects[subject][2]}</h2>
+  </div>
+  </div>
+  {/each}
+  </div>
 
 {/if}
 
