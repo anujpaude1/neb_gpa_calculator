@@ -7,9 +7,8 @@
   import { course } from './stores.js';
   let choosen_course
   course.subscribe(val => choosen_course=val)
-  
-  
 </script>
+
 <main>
 <h1 class="main_text" on:click={()=>course.update(val => val=undefined)} > NEB GPA Calculator </h1>
 <div class="container">
@@ -21,7 +20,11 @@
 </div>
 </main>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
   .main_text{
-cursor: pointer;
+    cursor: pointer;
+    font-family: 'Bangers', cursive;
+    font-size: 5em;
+    margin-bottom: 6px;
   }
 </style>
