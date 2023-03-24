@@ -347,7 +347,7 @@ function getGPA(num) {
 
 
 {#if calculated_gpa!== undefined}
-    <h2 class="glow">GPA: {calculated_gpa.toFixed(3)}</h2>
+    <h2 class="glow">GPA: {Math.trunc(calculated_gpa * 1000) / 1000}</h2>
     {#if always_true===true}
     {#each Object.keys(subjects) as subject}
     {#if subjects[subject][0] === null || subjects[subject][1] === null}

@@ -24,7 +24,14 @@
   .main_text{
     cursor: pointer;
     font-family: 'Bangers', cursive;
-    font-size: 5em;
+    font-size: 4.5em;
     margin-bottom: 6px;
   }
+  @media screen and (max-width: 430px) {
+  /* CSS rules for devices below width 420 */
+  .main_text{
+    font-size: 3.3em;
+  }
+  }
+
 </style>

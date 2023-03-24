@@ -286,6 +286,9 @@
     }
     @media screen and (max-width: 430px) {
   /* CSS rules for devices below width 420 */
+  .main_text{
+    font-size: 3.3em;
+  }
     .how{
         font-size: 1.3em;
     }
