@@ -4,9 +4,28 @@
   import { course } from '.././stores.js';
   import { onMount } from 'svelte'
   let choosen_course
+  let ng=[];
   let subjects={}
+  const num_to_gpa={
+  "4.0-3.6": "A+",
+  "3.6-3.2": "A",
+  "3.2-2.8": "B+",
+  "2.8-2.4": "B",
+  "2.4-2.0": "C+",
+  "2.0-1.6": "C",
+  "1.6-0.0": "D"
+}
+function getGPA(num) {
+  for (let range in num_to_gpa) {
+    let [upper, lower] = range.split("-").map(parseFloat);
+    if (num > lower && num <= upper) {
+      return num_to_gpa[range];
+    }
+  }
+  return "";
+}
   course.subscribe(val => choosen_course=val)
- 
+  let always_true=true
   let input_type
   let is_active1
   let is_active2
@@ -34,26 +53,26 @@
     
   }
   let science = {
-  "Nepali": [0, 0, 75,25],
-  "English": [0, 0, 75,25],
-  "Physics": [0, 0, 75,25],
-  "Chemistry": [0, 0, 75,25],
-  "Maths": [0, 0, 75,25],
-  "Computer": [0, 0, 50,50],
-  "Biology": [0, 0, 75,25],
-  "Social": [0, 0, 75,25]
+  "Nepali": [0, 0, 75,25,2.25,0.75,0],
+  "English": [0, 0, 75,25,3,1,0],
+  "Physics": [0, 0, 75,25,3.75,1.25,0],
+  "Chemistry": [0, 0, 75,25,3.75,1.25,0],
+  "Maths": [0, 0, 75,25,3.75,1.25,0],
+  "Computer": [0, 0, 50,50,2.5,2.5,0],
+  "Biology": [0, 0, 75,25,3.75,1.25,0],
+  "Social": [0, 0, 75,25,3.75,1.25,0]
   };
   let management = {
-  "Nepali": [0, 0, 75,25],
-  "English": [0, 0, 75,25],
-  "Social": [0, 0, 75,25],
-  "Economics": [0, 0, 75,25],
-  "Account": [0, 0, 75,25],
-  "Computer": [0, 0, 50,50],
-  "Maths": [0, 0, 75,25],
+  "Nepali": [0, 0, 75,25,2.25,0.75,0],
+  "English": [0, 0, 75,25,3,1,0],
+  "Social": [0, 0, 75,25,3.75,1.25,0],
+  "Economics": [0, 0, 75,25,3.75,1.25,0],
+  "Account": [0, 0, 75,25,3.75,1.25,0],
+  "Computer": [0, 0, 50,50,2.5,2.5,0],
+  "Maths": [0, 0, 75,25,3.75,1.25,0],
   };
   let select_style='background-color: grey';
-  let gpa=["4.0 or A+","3.6 or A","3.2 or B+","2.8 or B","2.4 or C+","2.0 or C","1.8 or D+","1.6 or D"]
+  let gpa=["4.0 or A+","3.6 or A","3.2 or B+","2.8 or B","2.4 or C+","2.0 or C","1.6 or D"]
   function update_gpap(event){
     const selected_value=event.target.value;
     const selected_class=event.target.className.split(" ")[0].toString().trim();
@@ -87,11 +106,13 @@
     update_gpa()
   }
   function calculate_gpa(event){
+
     const selected_value=event.target.value;
+    
+    
     const classarr=event.target.className.split(" ");
     const selected_class=classarr[0].toString().trim();
     let marks_to_gpa_result=marks_to_gpa(selected_class,parseInt(classarr[1]),selected_value);
-    console.log(marks_to_gpa_result)
     if(classarr[1]=="2")
     {
       subjects[selected_class].splice(1, 1, marks_to_gpa_result);
@@ -100,7 +121,11 @@
     {
       subjects[selected_class].splice(0, 1, marks_to_gpa_result);
     }
+    always_true=!always_true
     update_gpa()
+    
+
+
   }
 
   function marks_to_gpa(subject_name,position,value){
@@ -123,16 +148,17 @@
       if (((50/100) * subjects[subject_name][position]) > value && value >= ((40/100) * subjects[subject_name][position])) {
         return 2;
       }
-      if (((40/100) * subjects[subject_name][position]) > value && value >= ((30/100) * subjects[subject_name][position])) {
-        return 1.8;
-      }
-      if (((30/100) * subjects[subject_name][position]) > value && value >= ((20/100) * subjects[subject_name][position])) {
+      if (((40/100) * subjects[subject_name][position]) > value && value >= ((35/100) * subjects[subject_name][position])) {
         return 1.6;
+      }
+      if(value===""){
+        return 0;
       }
       else
       {
-        return 0
+        return null
       }
+      
   }
     
 
@@ -149,6 +175,15 @@
     {
       calculated_gpa=(subjects["Nepali"][1]*2.25+subjects["English"][1]*3+subjects["Maths"][1]*3.75+subjects["Economics"][1]*3.75+subjects["Account"][1]*3.75+subjects["Computer"][1]*2.5+subjects["Nepali"][0]*0.75+subjects["English"][0]*1+subjects["Maths"][0]*1.25+subjects["Economics"][0]*1.25+subjects["Account"][0]*1.25+subjects["Computer"][0]*2.5+subjects["Social"][1]*3.75+subjects["Social"][0]*1.25)/27;
     }
+    eachsubjectgpa()
+  }
+  function eachsubjectgpa(){
+    for (const subject of Object.keys(subjects)) {
+      let val=((subjects[subject][0]*subjects[subject][5])+(subjects[subject][1]*subjects[subject][4]))/(subjects[subject][4]+subjects[subject][5]);
+      subjects[subject][6]=getGPA(val);
+      
+  }
+  console.log(getGPA(3.8))
   }
   
 
@@ -189,16 +224,27 @@
     height:100%;
 
   }
-  .center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-family: sans-serif;
-  font-size: 2rem;
+  .glow {
+  /* font-size: 3rem;
   font-weight: bold;
-  color: rgb(255, 166, 0)181;
-  margin-top: 2rem;
+  color: #fff;
+  text-align: center;
+  margin-top: 1.4rem;
+  margin-bottom: -8px;
+  animation: glow 1s ease-in-out infinite alternate; */
+  font-size: 3em;
+  color: #fff;
+  text-align: center;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+@keyframes glow {
+  from {
+    text-shadow: 0 0 4px #fff, 0 0 8px #fff, 0 0 12px #0077be, 0 0 16px #0077be, 0 0 20px #0077be, 0 0 25px #0077be, 0 0 30px #0077be;
+  }
+  
+  to {
+    text-shadow: 0 0 4px #fff, 0 0 8px #00bfff, 0 0 12px #00bfff, 0 0 16px #00bfff, 0 0 20px #00bfff, 0 0 25px #00bfff, 0 0 30px #00bfff;
+  }
 }
 
 
@@ -300,6 +346,26 @@
 {/if}
 
 
-{#if calculated_gpa!==undefined }
-<h2 class="center">GPA: {calculated_gpa}</h2>
+{#if calculated_gpa!== undefined}
+    <h2 class="glow">GPA: {calculated_gpa.toFixed(3)}</h2>
+    {#if always_true===true}
+    {#each Object.keys(subjects) as subject}
+    {#if subjects[subject][0] === null || subjects[subject][1] === null}
+      <h2 style="color:rgb(173 26 26);">Oops you are NG in {subject}</h2>
+    {:else if subjects[subject][0] !== 0 && subjects[subject][1] !== 0}
+      <h2 style="color:rgb(34, 163, 23);">{subject} : {subjects[subject][6]}</h2>    
+    {/if}
+
+    {/each}
+    {/if}
+    {#if always_true===false}
+    {#each Object.keys(subjects) as subject}
+    {#if subjects[subject][0] === null || subjects[subject][1] === null}
+      <h2 style="color:rgb(173 26 26);">Oops you are NG in {subject}</h2>
+      {:else if subjects[subject][0] !== 0 && subjects[subject][1] !== 0}
+      <h2 style="color:rgb(34, 163, 23);">{subject} : {subjects[subject][6]}</h2>
+    {/if}
+    {/each}
+    {/if}
 {/if}
+
