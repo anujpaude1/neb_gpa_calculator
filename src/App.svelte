@@ -8,7 +8,7 @@
   let choosen_course
   course.subscribe(val => choosen_course=val)
 </script>
-
+<!-- hehe -->
 <main>
 <h1 class="main_text" on:click={()=>course.update(val => val=undefined)} > NEB GPA Calculator </h1>
 <div class="container">
