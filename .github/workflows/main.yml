@@ -23,4 +23,3 @@ jobs:
         server: ftp.paudelanuj.com.np
         username: ftp_github@paudelanuj.com.np
         password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: /../neb.paudelanuj.com.np/
