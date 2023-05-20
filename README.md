@@ -1,4 +1,4 @@
-#Site: https://anuj-paude1.github.io/neb_gpa_calculator/
+# Site: https://anuj-paude1.github.io/neb_gpa_calculator/
 
 # Svelte + Vite
 
