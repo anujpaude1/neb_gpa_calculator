@@ -1,4 +1,5 @@
 <script>
+  import banner from '../assets/aakhyan.png';
   import { navigate } from 'svelte-routing';
   import { each } from 'svelte/internal';
   import { course } from '.././stores.js';
@@ -387,7 +388,7 @@ function getGPA(num) {
 
 {#if choosen_course==="science" }
 <a href="https://www.facebook.com/aakhyaanacademy">
-  <img src="src/assets/aakhyan.png" class="banner" alt="aakhyan academy ">
+  <img src={banner} class="banner" alt="aakhyan academy ">
 </a>
 {/if}
 
