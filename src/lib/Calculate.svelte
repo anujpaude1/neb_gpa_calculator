@@ -185,6 +185,7 @@ function getGPA(num) {
   }
   console.log(getGPA(3.8))
   }
+
   
 
 </script>
@@ -297,6 +298,21 @@ function getGPA(num) {
     top:3px;
     margin-right: 10px;
   }
+
+  .banner{
+    padding-top: 30px;
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    /* display: flex; */
+    /* justify-content: center; */
+    align-items: center;
+  }
+  .banner img{
+    width: 100%;
+    height: 100%;
+  }
+
 </style>
 
 
@@ -368,4 +384,11 @@ function getGPA(num) {
     {/each}
     {/if}
 {/if}
+
+{#if choosen_course==="science" }
+<a href="https://www.facebook.com/aakhyaanacademy">
+  <img src="src/assets/aakhyan.png" class="banner" alt="aakhyan academy ">
+</a>
+{/if}
+
 
