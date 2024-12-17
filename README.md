@@ -1,49 +1,55 @@
-# Site: https://anuj-paude1.github.io/neb_gpa_calculator/
+# NEB GPA Calculator
 
-# Svelte + Vite
+This project is a GPA calculator for NEB students studying in grade 11 and 12. It allows students to calculate their GPA based on their marks or GPA for individual subjects.
 
-This template should help get you started developing with Svelte in Vite.
+## Features
 
-## Recommended IDE Setup
+- Calculate GPA based on marks or GPA for individual subjects.
+- Supports both Science and Management streams.
+- Provides detailed GPA calculation for each subject.
+- Responsive design for mobile and desktop devices.
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+## Installation
 
-## Need an official Svelte framework?
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/neb_gpa_calculator.git
+    ```
+2. Navigate to the project directory:
+    ```bash
+    cd neb_gpa_calculator
+    ```
+3. Install the dependencies:
+    ```bash
+    npm install
+    ```
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+## Usage
 
-## Technical considerations
+1. Start the development server:
+    ```bash
+    npm run dev
+    ```
+2. Open your browser and navigate to `http://localhost:5000`.
 
-**Why use this over SvelteKit?**
+## Project Structure
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+- `src/App.svelte`: Main application component.
+- `src/lib/Calculate.svelte`: Component for GPA calculation.
+- `src/lib/Stream.svelte`: Component for selecting the stream (Science or Management).
+- `src/stores.js`: Svelte store for managing the selected course.
+- `src/app.css`: Global CSS styles.
 
-This template contains as little as possible to get started with Vite + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+## Contributing
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+Contributions are welcome! Please open an issue or submit a pull request for any changes.
 
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
+## License
 
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-**Why include `.vscode/extensions.json`?**
+## Acknowledgements
 
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
-
-**Why enable `checkJs` in the JS template?**
-
-It is likely that most cases of changing variable types in runtime are likely to be accidental, rather than deliberate. This provides advanced typechecking out of the box. Should you like to take advantage of the dynamically-typed nature of JavaScript, it is trivial to change the configuration.
-
-**Why is HMR not preserving my local component state?**
-
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
-
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
-
-```js
-// store.js
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
-```
+- Svelte
+- MathJax
+- Google Tag Manager
