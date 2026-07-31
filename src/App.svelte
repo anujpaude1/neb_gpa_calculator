@@ -18,6 +18,9 @@
    <Stream></Stream>
    {/if}
 </div>
+<footer class="site_footer">
+  <a href="web-scientific-calculator/">Free Online Scientific Calculator</a>
+</footer>
 </main>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
@@ -34,4 +37,17 @@
   }
   }
 
+  .site_footer {
+    margin-top: 3em;
+    padding: 1em 0 0.5em;
+    text-align: center;
+  }
+  .site_footer a {
+    font-size: 0.75em;
+    opacity: 0.45;
+    text-decoration: none;
+  }
+  .site_footer a:hover {
+    opacity: 0.8;
+  }
 </style>
