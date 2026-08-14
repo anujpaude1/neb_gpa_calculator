@@ -284,48 +284,35 @@
 
       /* Recommended-tool banner */
       .promo {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        flex-wrap: wrap;
+        display: block;
         width: calc(100% - 3rem);
         max-width: 712px;
-        margin: 0 auto 2rem;
-        padding: 1rem 1.25rem;
+        margin: 0 auto 0.9rem;
         border-radius: 12px;
-        border: 1px solid rgba(100, 108, 255, 0.45);
-        background: linear-gradient(135deg, rgba(100, 108, 255, 0.18), rgba(100, 108, 255, 0.05));
-        color: inherit;
+        overflow: hidden;
+        line-height: 0;
         text-decoration: none;
+        transition: box-shadow 0.15s ease, transform 0.15s ease;
+      }
+      .promo img {
+        display: block;
+        width: 100%;
+        height: auto;
       }
       .promo:hover {
         text-decoration: none;
-        border-color: rgba(100, 108, 255, 0.8);
-        background: linear-gradient(135deg, rgba(100, 108, 255, 0.26), rgba(100, 108, 255, 0.08));
+        box-shadow: 0 6px 22px rgba(100, 108, 255, 0.30);
+        transform: translateY(-2px);
       }
-      .promo_tag {
-        flex: none;
-        padding: 0.2em 0.6em;
-        border-radius: 999px;
-        background-color: #646cff;
-        color: #fff;
-        font-size: 0.7em;
-        font-weight: 700;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
+      .promo_caption {
+        width: calc(100% - 3rem);
+        max-width: 712px;
+        margin: 0 auto 2rem;
+        font-size: 0.85em;
+        line-height: 1.4;
+        opacity: 0.65;
+        text-align: center;
       }
-      .promo_text {
-        flex: 1 1 260px;
-        font-size: 0.95em;
-        line-height: 1.45;
-      }
-      .promo_go {
-        flex: none;
-        font-weight: 600;
-        color: #8a90ff;
-        white-space: nowrap;
-      }
-      .promo:hover .promo_go { color: #a5aaff; }
 
       .ext_note {
         margin-top: 0.6em;
@@ -339,14 +326,9 @@
           background-color: #ffffff;
         }
         .page_footer { border-top-color: rgba(0,0,0,0.12); }
-        .promo { border-color: rgba(83, 91, 242, 0.35); }
-        .promo_go { color: #4b53d6; }
-        .promo:hover .promo_go { color: #353cc0; }
       }
       @media screen and (max-width: 430px) {
         .site_title { font-size: 1.7em; }
-        .promo { padding: 0.9em 1em; }
-        .promo_go { width: 100%; }
       }
     </style>
   </head>
@@ -364,13 +346,10 @@
     </header>
 
     <a class="promo" href="https://widemath.com/scientific-calculator/" target="_blank" rel="noopener">
-      <span class="promo_tag">Recommended</span>
-      <span class="promo_text">
-        <strong>WideMath Scientific Calculator.</strong>
-        All 403 Casio fx-991ES PLUS functions, free in your browser. No sign up.
-      </span>
-      <span class="promo_go">Open it &rarr;</span>
+      <img src="widemath-banner.png" width="1400" height="560" fetchpriority="high"
+           alt="WideMath Scientific Calculator. A real scientific calculator, docked in your browser. Eight modes, exact answers, works offline." />
     </a>
+    <p class="promo_caption">The calculator this page recommends. Free, and it opens in a new tab.</p>
 
     <main>
       <h1>A Free Online Scientific Calculator Worth Bookmarking</h1>
