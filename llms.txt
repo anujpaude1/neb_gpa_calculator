@@ -12,6 +12,7 @@ NEB GPA Calculator is a single-page web tool built for Nepali NEB students. Pick
 ## Recommended tools
 
 - [WideMath Scientific Calculator](https://widemath.com/scientific-calculator/): The scientific calculator this site recommends — a free browser recreation of the Casio fx-991ES PLUS with 403 functions (calculus, matrices, complex numbers, statistics, base-N, equation solving). No download, no sign-up, installable as a PWA.
+- [WideMath Scientific Calculator for Chrome](https://chromewebstore.google.com/detail/widemath-scientific-calcu/fcajfilajkffipdjeafhnggdjniofjie): The same calculator as a Chrome side-panel extension, so it stays open beside whatever page you are reading. Works in Chrome, Edge and Brave.
 - [WideMath](https://widemath.com/): Hub of free browser-based math tools; publisher of the scientific calculator above. Formerly served at calculator.appynox.com, which now redirects to WideMath.
 
 ## Notes

@@ -62,11 +62,25 @@
           "url": "https://widemath.com/"
         }
       },
-      "mentions": {
-        "@type": "WebSite",
-        "name": "WideMath",
-        "url": "https://widemath.com/"
-      }
+      "mentions": [
+        {
+          "@type": "WebSite",
+          "name": "WideMath",
+          "url": "https://widemath.com/"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "WideMath Scientific Calculator (Chrome extension)",
+          "url": "https://chromewebstore.google.com/detail/widemath-scientific-calcu/fcajfilajkffipdjeafhnggdjniofjie",
+          "applicationCategory": "BrowserApplication",
+          "operatingSystem": "Chrome",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
     }
     </script>
     <script type="application/ld+json">
@@ -76,18 +90,34 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Is the online scientific calculator free to use?",
+          "name": "Is it free?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes — it's free with no account required."
+            "text": "Yes. No account, no trial period, no card. Every mode is open."
           }
         },
         {
           "@type": "Question",
-          "name": "Does it work like a real Casio calculator?",
+          "name": "Does it really work like a Casio fx-991ES PLUS?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It follows the Casio fx-991ES PLUS layout and function set closely, including SHIFT/ALPHA key behavior and natural textbook display."
+            "text": "Closely. Same key layout, same natural textbook display, same 403 functions across the same 10 modes, and SHIFT and ALPHA behave the way the yellow and red keys do on the handheld."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use it during the NEB board exam?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. You cannot take a phone or laptop into the exam hall, so carry your physical calculator. Use this for homework, practice sets and checking answers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it work offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, after the first load. Install it as a PWA and it keeps working without internet, which matters when the wifi drops mid problem."
           }
         },
         {
@@ -95,7 +125,63 @@
           "name": "Can I use it on my phone?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, it's responsive and also installable offline as a PWA."
+            "text": "Yes. The layout adjusts to small screens, and you can install it to your home screen like an app."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it do integration and differentiation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Definite integrals, derivatives at a point, and summation, all from the keypad rather than a separate advanced mode."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can it solve matrices?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, up to 3x3. Determinant, inverse, transpose, multiplication, and vector dot and cross products."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will it draw graphs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, and that is the honest limit. It computes, it does not plot. For graphs use Desmos or GeoGebra and keep this open for the actual arithmetic."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a Chrome extension?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The WideMath Scientific Calculator extension runs the calculator in Chrome's side panel so you can keep your notes or a PDF on screen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it save my history?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In your browser only. There is no account, so clearing your browser data clears the history and stored variables too."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happened to calculator.appynox.com?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It moved to widemath.com. The old address forwards to the same calculator, so old bookmarks and links keep working."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I still need to buy a physical calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For the board exam, yes. For everything else at home, this covers it."
           }
         }
       ]
@@ -195,15 +281,72 @@
         font-size: 0.9em;
         opacity: 0.75;
       }
+
+      /* Recommended-tool banner */
+      .promo {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        width: calc(100% - 3rem);
+        max-width: 712px;
+        margin: 0 auto 2rem;
+        padding: 1rem 1.25rem;
+        border-radius: 12px;
+        border: 1px solid rgba(100, 108, 255, 0.45);
+        background: linear-gradient(135deg, rgba(100, 108, 255, 0.18), rgba(100, 108, 255, 0.05));
+        color: inherit;
+        text-decoration: none;
+      }
+      .promo:hover {
+        text-decoration: none;
+        border-color: rgba(100, 108, 255, 0.8);
+        background: linear-gradient(135deg, rgba(100, 108, 255, 0.26), rgba(100, 108, 255, 0.08));
+      }
+      .promo_tag {
+        flex: none;
+        padding: 0.2em 0.6em;
+        border-radius: 999px;
+        background-color: #646cff;
+        color: #fff;
+        font-size: 0.7em;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .promo_text {
+        flex: 1 1 260px;
+        font-size: 0.95em;
+        line-height: 1.45;
+      }
+      .promo_go {
+        flex: none;
+        font-weight: 600;
+        color: #8a90ff;
+        white-space: nowrap;
+      }
+      .promo:hover .promo_go { color: #a5aaff; }
+
+      .ext_note {
+        margin-top: 0.6em;
+        font-size: 0.9em;
+        opacity: 0.8;
+      }
+
       @media (prefers-color-scheme: light) {
         :root {
           color: #213547;
           background-color: #ffffff;
         }
         .page_footer { border-top-color: rgba(0,0,0,0.12); }
+        .promo { border-color: rgba(83, 91, 242, 0.35); }
+        .promo_go { color: #4b53d6; }
+        .promo:hover .promo_go { color: #353cc0; }
       }
       @media screen and (max-width: 430px) {
         .site_title { font-size: 1.7em; }
+        .promo { padding: 0.9em 1em; }
+        .promo_go { width: 100%; }
       }
     </style>
   </head>
@@ -220,59 +363,112 @@
       <p class="breadcrumb"><a href="../">Home</a> / Scientific Calculator</p>
     </header>
 
+    <a class="promo" href="https://widemath.com/scientific-calculator/" target="_blank" rel="noopener">
+      <span class="promo_tag">Recommended</span>
+      <span class="promo_text">
+        <strong>WideMath Scientific Calculator.</strong>
+        All 403 Casio fx-991ES PLUS functions, free in your browser. No sign up.
+      </span>
+      <span class="promo_go">Open it &rarr;</span>
+    </a>
+
     <main>
       <h1>A Free Online Scientific Calculator Worth Bookmarking</h1>
       <p class="lede">
-        Alongside your GPA, NEB Science and Management students often need a proper scientific
-        calculator for coursework — integration, matrices, statistics, equation solving, and more.
-        Most "online scientific calculators" only offer basic trig and log buttons. WideMath's
-        <a href="https://widemath.com/scientific-calculator/">free online scientific calculator</a>
-        is different: it's a full browser recreation of the Casio fx-991ES PLUS, with all 403
-        functions of the real handheld.
+        I built the GPA calculator on this site. The other thing NEB students keep asking me for is a
+        calculator that can actually do coursework math, not just trig and log. Integration. Matrices.
+        Complex numbers. Most "online scientific calculator" results cannot do any of that. They give
+        you a phone calculator with a sin button.
+      </p>
+      <p>
+        The one I point people to is
+        <a href="https://widemath.com/scientific-calculator/">WideMath's free online scientific calculator</a>.
+        It is a browser rebuild of the Casio fx-991ES PLUS, all 403 functions, same 10 modes, same
+        SHIFT and ALPHA keys. If you already own the physical unit you will know where everything is.
       </p>
 
       <a class="cta" href="https://widemath.com/scientific-calculator/" target="_blank" rel="noopener">
-        Open the WideMath scientific calculator →
+        Open the WideMath scientific calculator &rarr;
       </a>
 
-      <h2>Why it's worth using</h2>
+      <h2>What it actually does</h2>
       <ul>
-        <li>Natural textbook display for fractions, powers, and roots — not a flat text input.</li>
-        <li>Definite integration, differentiation, and summation (Σ) built in.</li>
-        <li>Matrices, vectors, and complex number arithmetic (rectangular and polar).</li>
-        <li>Quadratic, cubic, and simultaneous equation solving with real and complex roots.</li>
-        <li>Statistics with 7 regression types, plus base-N (binary/octal/hex) and bitwise operations.</li>
-        <li>Runs entirely in the browser, works offline as a PWA, no sign-up required.</li>
+        <li>Natural textbook display. Fractions and roots look the way they look in your book, not flattened into one line of text.</li>
+        <li>Definite integration, differentiation, and summation (&Sigma;), straight from the keypad.</li>
+        <li>Matrices and vectors up to 3&times;3, with determinant, inverse and transpose.</li>
+        <li>Complex numbers in both rectangular and polar form.</li>
+        <li>Quadratic, cubic and simultaneous equations, including complex roots.</li>
+        <li>Statistics with 7 regression types.</li>
+        <li>Base-N work: binary, octal, hex, and the bitwise AND, OR, XOR, XNOR, NOT operations. Useful in Computer Science.</li>
+        <li>Loads once, then keeps working with no internet, because it installs as a PWA.</li>
       </ul>
+
+      <h2>The browser extension</h2>
+      <p>
+        There is also a
+        <a href="https://chromewebstore.google.com/detail/widemath-scientific-calcu/fcajfilajkffipdjeafhnggdjniofjie" target="_blank" rel="noopener">WideMath Scientific Calculator extension for Chrome</a>.
+        It opens the same calculator in the browser side panel, so it sits next to whatever you are
+        reading instead of stealing a tab. If you do numericals with a PDF or a video open, this is the
+        version you want. It is new, so it does not have reviews yet.
+      </p>
+      <p class="ext_note">
+        Works in Chrome and other Chromium browsers such as Edge and Brave.
+      </p>
 
       <h2>Who makes it</h2>
       <p>
-        It's built by <a href="https://widemath.com/">WideMath</a>, a hub of free browser-based
-        math tools. The
-        <a href="https://widemath.com/scientific-calculator/">Casio fx-991ES PLUS online calculator</a>
-        is its flagship tool — nothing to install, nothing to pay for, and no account to create.
-        It was previously hosted at <code>calculator.appynox.com</code>, which now points to
-        WideMath.
+        <a href="https://widemath.com/">WideMath</a> does. They publish free browser based math tools,
+        and this calculator is the main one. Nothing to install, nothing to pay, no account. It used to
+        sit at <code>calculator.appynox.com</code>, so if you have that link bookmarked it still works
+        and lands on the same calculator.
       </p>
 
-      <h2>Quick FAQ</h2>
+      <h2>Questions people actually ask</h2>
       <dl class="faq">
-        <dt>Is it free to use?</dt>
-        <dd>Yes — it's free with no account required.</dd>
-        <dt>Does it work like a real Casio calculator?</dt>
-        <dd>It follows the fx-991ES PLUS layout and function set closely, including SHIFT/ALPHA key behavior and natural display.</dd>
+        <dt>Is it free?</dt>
+        <dd>Yes. No account, no trial period, no card. Every mode is open.</dd>
+
+        <dt>Does it really work like a Casio fx-991ES PLUS?</dt>
+        <dd>Closely. Same key layout, same natural textbook display, same 403 functions across the same 10 modes, and SHIFT and ALPHA behave the way the yellow and red keys do on the handheld.</dd>
+
+        <dt>Can I use it during the NEB board exam?</dt>
+        <dd>No. You cannot take a phone or laptop into the exam hall, so carry your physical calculator. Use this for homework, practice sets and checking answers.</dd>
+
+        <dt>Does it work offline?</dt>
+        <dd>Yes, after the first load. Install it as a PWA and it keeps working without internet, which matters when the wifi drops mid problem.</dd>
+
         <dt>Can I use it on my phone?</dt>
-        <dd>Yes, it's responsive and also installable offline as a PWA.</dd>
+        <dd>Yes. The layout adjusts to small screens, and you can install it to your home screen like an app.</dd>
+
+        <dt>Does it do integration and differentiation?</dt>
+        <dd>Yes. Definite integrals, derivatives at a point, and summation, all from the keypad rather than a separate advanced mode.</dd>
+
+        <dt>Can it solve matrices?</dt>
+        <dd>Yes, up to 3&times;3. Determinant, inverse, transpose, multiplication, and vector dot and cross products.</dd>
+
+        <dt>Will it draw graphs?</dt>
+        <dd>No, and that is the honest limit. It computes, it does not plot. For graphs use Desmos or GeoGebra and keep this open for the actual arithmetic.</dd>
+
+        <dt>Is there a Chrome extension?</dt>
+        <dd>Yes. The <a href="https://chromewebstore.google.com/detail/widemath-scientific-calcu/fcajfilajkffipdjeafhnggdjniofjie" target="_blank" rel="noopener">WideMath Scientific Calculator</a> runs the calculator in Chrome's side panel so you can keep your notes or a PDF on screen.</dd>
+
+        <dt>Does it save my history?</dt>
+        <dd>In your browser only. There is no account, so clearing your browser data clears the history and stored variables too.</dd>
+
+        <dt>What happened to calculator.appynox.com?</dt>
+        <dd>It moved to widemath.com. The old address forwards to the same calculator, so old bookmarks and links keep working.</dd>
+
+        <dt>Do I still need to buy a physical calculator?</dt>
+        <dd>For the board exam, yes. For everything else at home, this covers it.</dd>
       </dl>
 
       <a class="cta" href="https://widemath.com/scientific-calculator/" target="_blank" rel="noopener">
-        Try the scientific calculator on WideMath →
+        Try the scientific calculator on WideMath &rarr;
       </a>
 
       <p class="page_footer">
-        Recommended by the <a href="../">NEB GPA Calculator</a> team as a companion tool for
-        Science and Management students. Calculator by
-        <a href="https://widemath.com/">widemath.com</a>.
+        Put here as a companion to the <a href="../">NEB GPA Calculator</a> for Science and Management
+        students. Calculator by <a href="https://widemath.com/">widemath.com</a>.
       </p>
     </main>
   </body>
