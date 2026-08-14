@@ -20,6 +20,8 @@
 </div>
 <footer class="site_footer">
   <a href="web-scientific-calculator/">Free Online Scientific Calculator</a>
+  <span class="sep">·</span>
+  <a href="https://widemath.com/scientific-calculator/" target="_blank" rel="noopener">Casio fx-991ES PLUS calculator by WideMath</a>
 </footer>
 </main>
 <style>
@@ -49,5 +51,10 @@
   }
   .site_footer a:hover {
     opacity: 0.8;
+  }
+  .site_footer .sep {
+    font-size: 0.75em;
+    opacity: 0.35;
+    margin: 0 0.5em;
   }
 </style>
