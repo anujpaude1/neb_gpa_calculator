@@ -21,7 +21,7 @@
 <footer class="site_footer">
   <a href="web-scientific-calculator/">Free Online Scientific Calculator</a>
   <span class="sep">·</span>
-  <a href="https://widemath.com/scientific-calculator/" target="_blank" rel="noopener">Casio fx-991ES PLUS calculator by WideMath</a>
+  <a href="https://widemath.com/scientific-calculator/" target="_blank" rel="noopener">Scientific calculator by WideMath</a>
 </footer>
 </main>
 <style>

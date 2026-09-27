@@ -178,46 +178,36 @@
     }
   }
 
+  // Every NEB class 11/12 combination is 6 subjects worth 27 credit hours.
+  const neb_credit_hours = 27;
   var calculated_gpa;
+  var entered_subjects = 0;
+  var entered_credit_hours = 0;
   function update_gpa() {
-    if (choosen_course === "science") {
-      calculated_gpa =
-        (subjects["Nepali"][1] * 2.25 +
-          subjects["English"][1] * 3 +
-          subjects["Maths"][1] * 3.75 +
-          subjects["Physics"][1] * 3.75 +
-          subjects["Chemistry"][1] * 3.75 +
-          subjects["Computer"][1] * 2.5 +
-          subjects["Nepali"][0] * 0.75 +
-          subjects["English"][0] * 1 +
-          subjects["Maths"][0] * 1.25 +
-          subjects["Physics"][0] * 1.25 +
-          subjects["Chemistry"][0] * 1.25 +
-          subjects["Computer"][0] * 2.5 +
-          subjects["Biology"][1] * 3.75 +
-          subjects["Biology"][0] * 1.25 +
-          subjects["Social"][1] * 3.75 +
-          subjects["Social"][0] * 1.25) /
-        27;
+    // Weighted average over the parts that have a grade, so subjects left
+    // on "Select" (0) don't count. NG (null) counts as 0 grade points.
+    let grade_points = 0;
+    let credit_hours = 0;
+    entered_subjects = 0;
+    entered_credit_hours = 0;
+    for (const subject of Object.keys(subjects)) {
+      // [practical gpa, theory gpa, theory marks, practical marks, theory ch, practical ch]
+      const s = subjects[subject];
+      if (s[0] !== 0) {
+        grade_points += s[0] * s[5];
+        credit_hours += s[5];
+      }
+      if (s[1] !== 0) {
+        grade_points += s[1] * s[4];
+        credit_hours += s[4];
+      }
+      if (s[0] !== 0 || s[1] !== 0) {
+        entered_subjects++;
+        entered_credit_hours += s[4] + s[5];
+      }
     }
-    if (choosen_course === "management") {
-      calculated_gpa =
-        (subjects["Nepali"][1] * 2.25 +
-          subjects["English"][1] * 3 +
-          subjects["Maths"][1] * 3.75 +
-          subjects["Economics"][1] * 3.75 +
-          subjects["Account"][1] * 3.75 +
-          subjects["Computer"][1] * 2.5 +
-          subjects["Nepali"][0] * 0.75 +
-          subjects["English"][0] * 1 +
-          subjects["Maths"][0] * 1.25 +
-          subjects["Economics"][0] * 1.25 +
-          subjects["Account"][0] * 1.25 +
-          subjects["Computer"][0] * 2.5 +
-          subjects["Social"][1] * 3.75 +
-          subjects["Social"][0] * 1.25) /
-        27;
-    }
+    calculated_gpa =
+      credit_hours > 0 ? Math.min(grade_points / credit_hours, 4) : 0;
     eachsubjectgpa();
   }
   function eachsubjectgpa() {
@@ -226,7 +216,8 @@
         (subjects[subject][0] * subjects[subject][5] +
           subjects[subject][1] * subjects[subject][4]) /
         (subjects[subject][4] + subjects[subject][5]);
-      subjects[subject][6] = getGPA(val);
+      // Round off float noise, or B+ and B+ in Nepali gives 3.2000000000000006 (an A).
+      subjects[subject][6] = getGPA(Math.round(val * 1e6) / 1e6);
     }
     console.log(getGPA(3.8));
   }
@@ -259,20 +250,24 @@
       <div id="combo">
         <h2 class="subject_name">{subject}</h2>
         <div id="each_subject">
-          <h3>Practical:</h3>
-          <select class={subject} on:change={update_gpap}>
-            <option selected>Select</option>
-            {#each gpa as g}
-              <option>{g}</option><br />
-            {/each}
-          </select>
-          <h3>Theory:</h3>
-          <select class={subject} on:change={update_gpat}>
-            <option selected>Select</option>
-            {#each gpa as g}
-              <option>{g}</option><br />
-            {/each}
-          </select>
+          <div class="field">
+            <h3>Practical:</h3>
+            <select class={subject} on:change={update_gpap}>
+              <option selected>Select</option>
+              {#each gpa as g}
+                <option>{g}</option><br />
+              {/each}
+            </select>
+          </div>
+          <div class="field">
+            <h3>Theory:</h3>
+            <select class={subject} on:change={update_gpat}>
+              <option selected>Select</option>
+              {#each gpa as g}
+                <option>{g}</option><br />
+              {/each}
+            </select>
+          </div>
         </div>
       </div>
     {/each}
@@ -288,22 +283,26 @@
       <div id="combo">
         <h2 class="subject_name">{subject}</h2>
         <div id="each_subject">
-          <h3>Practical :</h3>
-          <input
-            type="text"
-            id="text_box"
-            class={subject + " 3"}
-            on:change={calculate_gpa}
-          />
-          <h2 class="outof">/{subjects[subject][3]}</h2>
-          <h3>Theory :</h3>
-          <input
-            type="text"
-            id="text_box"
-            class={subject + " 2"}
-            on:change={calculate_gpa}
-          />
-          <h2 class="outof">/{subjects[subject][2]}</h2>
+          <div class="field">
+            <h3>Practical :</h3>
+            <input
+              type="text"
+              id="text_box"
+              class={subject + " 3"}
+              on:change={calculate_gpa}
+            />
+            <h2 class="outof">/{subjects[subject][3]}</h2>
+          </div>
+          <div class="field">
+            <h3>Theory :</h3>
+            <input
+              type="text"
+              id="text_box"
+              class={subject + " 2"}
+              on:change={calculate_gpa}
+            />
+            <h2 class="outof">/{subjects[subject][2]}</h2>
+          </div>
         </div>
       </div>
     {/each}
@@ -311,7 +310,14 @@
 {/if}
 
 {#if calculated_gpa !== undefined}
-  <h2 class="glow">GPA: {Math.trunc(calculated_gpa * 1000) / 1000}</h2>
+  <!-- The + 1e-6 stops float noise from truncating 3.1 to 3.099. -->
+  <h2 class="glow">GPA: {Math.trunc(calculated_gpa * 1000 + 1e-6) / 1000}</h2>
+  {#if entered_credit_hours > neb_credit_hours}
+    <h2 style="color:rgb(173 26 26);">
+      You have entered {entered_subjects} subjects, but NEB class 11 and 12 have
+      only 6 ({neb_credit_hours} credit hours). Remove the ones you have not taken.
+    </h2>
+  {/if}
   {#if always_true === true}
     {#each Object.keys(subjects) as subject}
       {#if subjects[subject][0] === null || subjects[subject][1] === null}
@@ -405,9 +411,15 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: baseline;
     padding-bottom: 20px;
+  }
+  /* Keeps each label with its input, so a narrow row wraps between them. */
+  .field {
+    display: flex;
+    align-items: baseline;
   }
 
   #changing {

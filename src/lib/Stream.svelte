@@ -29,6 +29,7 @@
 <div class="info">
 <h3>Overall GPA for NEB class 12 is calculated by</h3> <div id="math_formula">  <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><munderover accent='false' accentunder='false'><mo>&#x2211;</mo><mrow/><mrow/></munderover><mi>G</mi><mi>P</mi><mi>A</mi><mo>(</mo><mi>T</mi><mi>h</mi><mo>)</mo><mo>&#xd7;</mo><mi>C</mi><mi>r</mi><mi>e</mi><mi>d</mi><mi>i</mi><mi>t</mi><mo>&#xA0;</mo><mi>H</mi><mi>o</mi><mi>u</mi><mi>r</mi><mo>(</mo><mi>T</mi><mi>h</mi><mo>)</mo><mo>+</mo><mi>G</mi><mi>P</mi><mi>A</mi><mo>(</mo><mi>P</mi><mi>r</mi><mo>)</mo><mo>&#xA0;</mo><mo>&#xd7;</mo><mo>&#xA0;</mo><mi>C</mi><mi>r</mi><mi>e</mi><mi>d</mi><mi>i</mi><mi>t</mi><mo>&#xA0;</mo><mi>H</mi><mi>o</mi><mi>u</mi><mi>r</mi><mo>(</mo><mi>P</mi><mi>r</mi><mo>)</mo></mrow><mrow><mi>T</mi><mi>o</mi><mi>t</mi><mi>a</mi><mi>l</mi><mo>&#xA0;</mo><mi>C</mi><mi>r</mi><mi>e</mi><mi>d</mi><mi>i</mi><mi>t</mi><mo>&#xA0;</mo><mi>H</mi><mi>o</mi><mi>u</mi><mi>r</mi></mrow></mfrac></math> </div>
 <h3 class="long_text">It was quite easy to calculate GPA till grade ten as credit hour of both practical and theory used to be same. But in grade 12 it may vary according to subjects. For eg. credit hour of Nepali(Theory) is 2.25 but Nepali(Practical) is 0.75 and for English(Therory) credit hour is 3 but for English(Practical) is 1. In order to get A+ in Nepali(Theory) you need to get 90% of 75 which is 67.5 and for Nepali(Practical) 90% of 25 = 22.5 is required. </h3>
+<div class="table_wrap">
 <table class="customTable">
   <tbody><tr>
       <th>
@@ -208,6 +209,7 @@
           </td>
                           </tr>
   </tbody></table>
+</div>
 
 
 
@@ -273,6 +275,13 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        max-width: 100%;
+    }
+    /* On narrow screens the table scrolls on its own instead of
+       widening .info and pushing the text off screen. */
+    .table_wrap{
+        max-width: 100%;
+        overflow-x: auto;
     }
     .long_text{
         width:60%;
@@ -309,6 +318,13 @@
         width: 100%;
         font-weight: 300;
         margin-bottom: 20px;
+    }
+    .customTable{
+        font-size: 0.9rem;
+    }
+    .long_text{
+        padding: 0 12px;
+        box-sizing: border-box;
     }
     }
     h3{
